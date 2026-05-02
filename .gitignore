@@ -1,0 +1,19 @@
+# Compiled
+*.elc
+
+# Packaging
+.cask
+dist/
+
+# Backup files
+*~
+\#*\#
+.\#*
+auto-save-list
+
+# Undo-tree save-files
+*.~undo-tree
+
+# IDE/Tool specific
+.projectile
+.dir-locals.el
