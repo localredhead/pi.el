@@ -136,22 +136,29 @@ One Emacs package already provides Pi integration on MELPA:
   with fork/search. 
 
 pi.el fills a different niche: a **lightweight vterm wrapper** that shows Pi's
-native TUI exactly as it appears in a real terminal — ANSI cursor positioning,
-interactive menus, mouse support, the works. It runs on **Emacs 28.1+**.
+native TUI exactly as it appears in a real terminal. It runs on **Emacs 28.1+**.
+
+The primary motivation for pi.el is to use Pi's slash commands
+(`/help`, `/ask`, `/edit`, `/undo`, `/model`, etc.) and package system
+*exactly as Pi's developers intended*. Pi's slash commands present rich,
+ncurses-based menus for file selection, pattern matching, diff reviews,
+and multi-agent handoffs — all of which render correctly in vterm.
+A re-rendered UI may display chat history beautifully, but it loses the
+interactive TUI experience built into Pi itself.
 
 |                   | **pi.el**                                 | **dnouri/pi-coding-agent**                 |
 |-------------------|-------------------------------------------|--------------------------------------------|
 | Interface         | vterm — Pi's native TUI unchanged         | Native Emacs buffers (chat + input)        |
 | Rendering         | Raw ANSI/ncurses — what Pi ships          | Markdown + tree-sitter syntax highlighting |
 | Requirements      | Emacs 28.1+, vterm                        | Emacs 29+, tree-sitter, C compiler         |
-| Pi TUI support    | Full — menus, mouse, ncurses all intact   | Pi is consumed and re-rendered             |
+| Slash commands    | Full — menus, diff reviews, pickers intact| Pi is consumed and re-rendered             |
 | Project awareness | Auto-cds to project root via `project.el` | Works from current directory               |
 | Session model     | Hides/restores vterm — state survives     | Opens/closes Emacs buffers per session     |
 | Extra deps        | vterm only                                | transient, md-ts-mode, markdown-table-wrap |
 
-Choose **pi.el** if you want Pi's Tui experience unmodified, or you're on
-Emacs 28.x. Choose **dnouri** if you want a richer Emacs-native UI and have
-Emacs 29+.
+Choose **pi.el** if you want Pi's slash commands and menus working as
+designed, or you're on Emacs 28.x. Choose **dnouri** if you want a richer
+Emacs-native UI and have Emacs 29+.
 
 [dnouri/pi-coding-agent]: https://github.com/dnouri/pi-coding-agent
 
