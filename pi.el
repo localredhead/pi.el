@@ -217,10 +217,10 @@ Interactively:
          current-prefix-arg))
 
   (unless (executable-find pi-binary)
-    (user-error "pi: binary `%s' not found on exec-path" pi-binary))
+    (user-error "Pi: binary `%s' not found on exec-path" pi-binary))
 
   (unless (require 'vterm nil t)
-    (user-error "pi: the `vterm' package is required. Install from MELPA."))
+    (user-error "Pi: the `vterm' package is required. Install from MELPA"))
 
   (catch 'pi
     (let ((work-dir (file-name-as-directory
