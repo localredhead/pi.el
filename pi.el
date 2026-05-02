@@ -30,11 +30,11 @@
 ;; TUI experience inside Emacs.
 ;;
 ;; Quick start:
-;;   M-x pi                     ; Launch Pi in the current project's buffer
-;;   M-x pi-toggle              ; Show / hide Pi (preserves session)
-;;   M-x pi-cwd                 ; Launch Pi using current directory
-;;   M-x pi-other-window        ; Launch in another window
-;;   C-u M-x pi                 ; Force a fresh session
+;;   \[pi]                     ; Launch Pi in the current project's buffer
+;;   \[pi-toggle]              ; Show / hide Pi (preserves session)
+;;   \[pi-cwd]                 ; Launch Pi using current directory
+;;   \[pi-other-window]        ; Launch in another window
+;;   C-u \[pi]                 ; Force a fresh session
 ;;
 ;; Customization:
 ;;   M-x customize-group RET pi RET
@@ -208,8 +208,8 @@ OTHER-WINDOW  — if non-nil, display in another window.
 FORCE-NEW     — if non-nil, create a fresh session even if one exists.
 
 Interactively:
-  M-x pi              Use current project
-  C-u M-x pi          Force new session"
+  \[pi]              Use current project
+  C-u \[pi]          Force new session"
   (interactive
    (list (pi--project-root)
          nil
