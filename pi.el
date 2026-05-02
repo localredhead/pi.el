@@ -8,6 +8,7 @@
 ;; Package-Requires: ((emacs "28.1"))
 ;; package-lint: vterm requires libvterm (native C library), installed at
 ;; Keywords: tools, processes
+;; Assisted-by: Qwen-plus 3.6 <https://qwen.ai>
 ;;
 ;; Licensed under the Apache License, Version 2.0 (the "License");
 ;; you may not use this file except in compliance with the License.
