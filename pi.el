@@ -35,7 +35,7 @@
 ;;   \[pi-toggle]              ; Show / hide Pi (preserves session)
 ;;   \[pi-cwd]                 ; Launch Pi using current directory
 ;;   \[pi-other-window]        ; Launch in another window
-;;   With prefix argument, force a fresh session;;
+;;   With prefix argument, force a fresh session.
 ;; Customization:
 ;;   M-x customize-group RET pi RET
 
@@ -57,7 +57,7 @@
 (defvar vterm-buffer-name)
 
 ;;---------------------------------------------------------------------------
-;; Project.el declarations (Emacs 27+)
+;; Project.el declarations (Emacs 28+)
 ;;---------------------------------------------------------------------------
 (declare-function project-root "project" (&optional project))
 
@@ -102,7 +102,7 @@ Increase if your shell is slow to load."
 
 (defcustom pi-use-project-root t
   "If non-nil, cd to project root before launching Pi.
-Uses `project-root' (Emacs 27+) or command `projectile-project-root'."
+Uses `project-root' (Emacs 28+) or command `projectile-project-root'."
   :type 'boolean
   :group 'pi)
 
@@ -137,7 +137,7 @@ Each function receives the vterm buffer."
       (pi--projectile-root)))
 
 (defun pi--project-el-root ()
-  "Get project root using Emacs built-in project.el (Emacs 27+)."
+  "Get project root using Emacs built-in project.el (Emacs 28+)."
   (when (fboundp 'project-current)
     (when-let* ((proj (project-current nil)))
       (when-let* ((root (project-root proj)))
