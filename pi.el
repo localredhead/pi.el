@@ -34,8 +34,7 @@
 ;;   \[pi-toggle]              ; Show / hide Pi (preserves session)
 ;;   \[pi-cwd]                 ; Launch Pi using current directory
 ;;   \[pi-other-window]        ; Launch in another window
-;;   C-u \[pi]                 ; Force a fresh session
-;;
+;;   With prefix argument, force a fresh session;;
 ;; Customization:
 ;;   M-x customize-group RET pi RET
 
@@ -102,13 +101,13 @@ Increase if your shell is slow to load."
 
 (defcustom pi-use-project-root t
   "If non-nil, cd to project root before launching Pi.
-Uses `project-root' (Emacs 27+) or `projectile-project-root'."
+Uses `project-root' (Emacs 27+) or command `projectile-project-root'."
   :type 'boolean
   :group 'pi)
 
 (defcustom pi-display-function #'pop-to-buffer-same-window
   "Function used to display the Pi vterm buffer.
-  `pop-to-buffer-same-window'  — Reuse selected window (default)
+`pop-to-buffer-same-window'  — Reuse selected window (default)
   `pop-to-buffer'              — Emacs decides
   `switch-to-buffer'           — Always use selected window
   `display-buffer'             — Use `display-buffer-alist' rules"
@@ -192,12 +191,12 @@ Scheduled after a delay so the shell prompt is ready."
   (when pi-auto-launch-command
     (let ((buf (current-buffer)))
       (run-at-time pi-startup-wait nil
-        (lambda ()
-          (with-current-buffer buf
-            (when (and (derived-mode-p 'vterm-mode)
-                       (fboundp 'vterm-send-string))
-              (vterm-send-string pi-binary)
-              (vterm-send-return))))))))
+                   (lambda ()
+                     (with-current-buffer buf
+                       (when (and (derived-mode-p 'vterm-mode)
+                                  (fboundp 'vterm-send-string))
+                         (vterm-send-string pi-binary)
+                         (vterm-send-return))))))))
 
 ;;;###autoload
 (defun pi (&optional dir other-window force-new)
@@ -209,7 +208,7 @@ FORCE-NEW     — if non-nil, create a fresh session even if one exists.
 
 Interactively:
   \[pi]              Use current project
-  C-u \[pi]          Force new session"
+  With a prefix argument, force a new session."
   (interactive
    (list (pi--project-root)
          nil
@@ -287,7 +286,7 @@ Interactively:
 
 This is the recommended way to quickly dismiss and restore Pi without
 killing the underlying session.  After hiding, all terminal state
-(command history, TUI selections, etc.) is preserved."
+\(command history, TUI selections, etc.) is preserved."
   (interactive)
   (let* ((work-dir (or (pi--project-root) default-directory))
          (buf (pi--find-existing work-dir)))
@@ -324,7 +323,7 @@ killing the underlying session.  After hiding, all terminal state
 ;;;###autoload
 (define-minor-mode pi-mode
   "Minor mode for Pi-specific enhancements in a vterm buffer.
-Automatically enabled in buffers created by `pi'."
+Automatically enabled in buffers created by pi.el."
   :lighter pi-mode-line
   :keymap pi-mode-map
   :group 'pi
