@@ -5,7 +5,8 @@
 ;; Copyright (C) 2025 Levi Strope
 ;; Version: 0.1.0
 ;; URL: https://github.com/localredhead/pi.el
-;; Package-Requires: ((emacs "27.1") (vterm "0.0.2"))
+;; Package-Requires: ((emacs "28.1"))
+;; package-lint: vterm requires libvterm (native C library), installed at
 ;; Keywords: tools, processes
 ;;
 ;; Licensed under the Apache License, Version 2.0 (the "License");
